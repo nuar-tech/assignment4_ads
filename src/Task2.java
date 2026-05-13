@@ -40,7 +40,6 @@ public class Task2 {
 
         adj[uIdx].add(new Edge(v, weight));
         adj[vIdx].add(new Edge(u, weight));
-
     }
 
     public void printGraph(){
@@ -55,16 +54,15 @@ public class Task2 {
 
     public void dfs(char startLabel){
         boolean[] visited = new boolean[V];
-        int startIdx = getIndex(startLabel);
+        int start = getIndex(startLabel);
         System.out.println("DFS starting from " + startLabel + ": ");
-        visitNode(startIdx, visited);
+        visitNode(start, visited);
         System.out.println();
     }
 
     public void visitNode(int vIdx, boolean[] visited) {
         visited[vIdx] = true;
         System.out.println(vertexLabels[vIdx] + " ");
-
 
         for (Edge edge : adj[vIdx]) {
             int neighborIdx = getIndex(edge.target);
@@ -78,10 +76,10 @@ public class Task2 {
         boolean[] visited = new boolean[V];
         Queue<Integer> queue = new LinkedList<>();
 
-        int startIdx = getIndex(startLabel);
+        int start = getIndex(startLabel);
 
-        visited[startIdx] = true;
-        queue.add(startIdx);
+        visited[start] = true;
+        queue.add(start);
 
         System.out.print("BFS Order starting from " + startLabel + ": ");
 
@@ -113,5 +111,6 @@ public class Task2 {
         System.out.println();
         g.dfs('A');
         g.bfs('D');
+        System.out.println("Time Complexity DFS: O(V+E); BFS: O(V+E)");
     }
 }

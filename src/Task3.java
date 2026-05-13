@@ -54,18 +54,18 @@ public class Task3 {
         adj[vIdx].add(new Edg(u, weight));
     }
 
-    public void solveDijkstra(char startLabel) {
-        int startIdx = getIndex(startLabel);
+    public void Dijkstra(char startLabel) {
+        int start = getIndex(startLabel);
         int[] distances = new int[V];
-        int[] parents = new int[V]; // To store the path
+        int[] parents = new int[V];
         boolean[] processed = new boolean[V];
 
         Arrays.fill(distances, Integer.MAX_VALUE);
         Arrays.fill(parents, -1);
-        distances[startIdx] = 0;
+        distances[start] = 0;
 
         PriorityQueue<NodeDistance> pq = new PriorityQueue<>();
-        pq.add(new NodeDistance(startIdx, 0));
+        pq.add(new NodeDistance(start, 0));
 
         while (!pq.isEmpty()) {
             NodeDistance current = pq.poll();
@@ -86,10 +86,10 @@ public class Task3 {
             }
         }
 
-        printResults(startLabel, distances, parents);
+        printResults(distances, parents);
     }
 
-    private void printResults(char start, int[] distances, int[] parents) {
+    private void printResults(int[] distances, int[] parents) {
         for (int i = 0; i < V; i++) {
             System.out.print("To " + vertexLabels[i] + ": Distance = " + distances[i] + ", Path = ");
             printPath(i, parents);
@@ -118,6 +118,6 @@ public class Task3 {
         g.addEdge('D', 'A', 9);
         g.addEdge('E', 'B', 9);
 
-        g.solveDijkstra('E');
+        g.Dijkstra('E');
     }
 }

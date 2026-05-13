@@ -39,7 +39,6 @@ public class Task1 {
 
         adj[uIdx].add(new E(v, weight));
         adj[vIdx].add(new E(u, weight));
-
     }
 
     public void printGraph(){
